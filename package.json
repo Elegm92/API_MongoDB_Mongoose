@@ -1,0 +1,28 @@
+{
+  "name": "api_mongodb-_mongoose",
+  "version": "1.0.0",
+  "description": "Prueba",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elegm92/API_MongoDB-Mongoose.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Elegm92/API_MongoDB-Mongoose/issues"
+  },
+  "homepage": "https://github.com/Elegm92/API_MongoDB-Mongoose#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "morgan": "^1.10.1"
+  }
+}
