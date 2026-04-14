@@ -7,26 +7,38 @@ const getProducts = async (req, res) => {
   res.status(200).json(products)
 }
 
-// POST - crear producto
 const createProduct = async (req, res) => {
-  const { title, price, description, company_name } = req.body
+  try {
+    const { title, price, description, provider } = req.body;
 
-  const providerFound = await Provider.findOne({ company_name: company_name })
+    const providerFound = await Provider.findById(provider);
 
-  const newProduct = new Product({
-    title,
-    price,
-    description,
-    provider: providerFound._id
-  })
+    if (!providerFound) {
+      return res.status(404).json({
+        message: 'Provider no encontrado'
+      });
+    }
 
-  const savedProduct = await newProduct.save()
+    const newProduct = new Product({
+      title,
+      price,
+      description,
+      provider: providerFound._id
+    });
 
-  res.status(201).json({
-    message: 'producto creado',
-    product: savedProduct
-  })
-}
+    const savedProduct = await newProduct.save();
+
+    res.status(201).json({
+      message: 'Producto creado',
+      product: savedProduct
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error al crear el producto',
+      error: error.message
+    });
+  }
+};
 
 // PUT - actualizar producto
 const updateProduct = async (req, res) => {
