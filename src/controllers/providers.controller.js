@@ -1,13 +1,13 @@
 const Provider = require('../models/providers')
 const Product = require('../models/products')
 
-// GET - obtener todos los providers
+//Obtener todos los providers
 const getProviders = async (req, res) => {
   const providers = await Provider.find()
   res.status(200).json(providers)
 }
 
-// POST - crear provider
+// Crear provider
 const createProvider = async (req, res) => {
   const newProvider = new Provider(req.body)
   const savedProvider = await newProvider.save()
@@ -18,7 +18,7 @@ const createProvider = async (req, res) => {
   })
 }
 
-// PUT - actualizar provider
+// Actualizar provider
 const updateProvider = async (req, res) => {
   const { company_name, CIF, address, url_web } = req.body
 
@@ -34,7 +34,7 @@ const updateProvider = async (req, res) => {
   })
 }
 
-// DELETE - borrar provider
+// Borrar provider
 const deleteProvider = async (req, res) => {
   const { company_name } = req.body
 

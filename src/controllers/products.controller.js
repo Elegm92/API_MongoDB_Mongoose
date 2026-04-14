@@ -40,7 +40,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-// PUT - actualizar producto
+// Aqui actualizamos producto
 const updateProduct = async (req, res) => {
   const { title, price, description, company_name } = req.body
 
@@ -62,7 +62,7 @@ const updateProduct = async (req, res) => {
   })
 }
 
-// DELETE - borrar producto
+// Borramos producto
 const deleteProduct = async (req, res) => {
   const { title } = req.body
 

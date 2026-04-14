@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const connectDB = async() => {
     const mongoUri = process.env.MONGO_URI
-    await mongoose.connect(mongoUri, { family: 4 }) // ← añade esto
+    await mongoose.connect(mongoUri)
     console.log("Conectado a Mongo")
 }
 
