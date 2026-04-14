@@ -1,22 +1,32 @@
-const express = require('express') //Importamos express
-const app = express() //Hacemos que funcione para que se ejecute
-const connectDB = require("./config/db_mongo")
+require("dotenv").config();
+const express = require("express");
+const morgan = require("morgan");
+const app = express();
+const connectDB = require("./config/db_mongo");
 
-require('dotenv').config()
+const providersRoutes = require("./routes/providers.routes");
+const productsRoutes = require("./routes/products.routes");
 
-const PORT = 3000 //Necesitamos un puerto
-app.use(express.json()) //Parsea los datos que vengan del body(Colocarlo siempre)
+const PORT = process.env.PORT || 3000;
 
-app.get('/',(req, res)=>{ //Es un endpoint
-    res.send("funciona")
-})
+app.use(express.json());
+app.use(morgan("dev"));
 
-app.use((req,res)=>{
-    res.status(404).json({
-        error:"la pagina no existe"
-    })
-})//Para que cuando la url no exista me de un mensaje. Se pone abajo porque lo lee por orden
+app.get("/", (req, res) => {
+  res.send("funciona");
+});
 
-connectDB() //Con esto conectamos a MongoDB
+app.use("/api/providers", providersRoutes);
+app.use("/api/products", productsRoutes);
 
-app.listen(PORT, () => console.log(`El servidor esta escuchando en http:localhost:${PORT}`)) //Ahora escuchamos lo que estamos levantando en el puerto que establecemos
+app.use((req, res) => {
+  res.status(404).json({
+    error: "la pagina no existe",
+  });
+});
+
+connectDB();
+
+app.listen(PORT, () =>
+  console.log(`El servidor esta escuchando en http://localhost:${PORT}`)
+);

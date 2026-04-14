@@ -1,11 +1,11 @@
 {
-  "name": "api_mongodb-_mongoose",
+  "name": "api-mongodb-mongoose",
   "version": "1.0.0",
   "description": "Prueba",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch src/app.js"
+    "start": "node src/app.js"
   },
   "repository": {
     "type": "git",
