@@ -1,5 +1,5 @@
-const Provider = require('../models/providers')
-const Product = require('../models/products')
+const Provider = require('../models/Providers')
+const Product = require('../models/Products')
 
 //Obtener todos los providers
 const getProviders = async (req, res) => {

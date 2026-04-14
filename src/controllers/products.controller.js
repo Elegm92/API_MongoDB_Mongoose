@@ -1,5 +1,5 @@
-const Product = require('../models/products')
-const Provider = require('../models/providers')
+const Provider = require('../models/Providers')
+const Product = require('../models/Products')
 
 // GET - obtener todos los productos con populate
 const getProducts = async (req, res) => {
